@@ -1,0 +1,21 @@
+{
+    "name": "@lmdsgen/api",
+    "type": "module",
+    "packageManager": "bun@1.34.0",
+    "version": "0.0.1-alpha.0.1",
+    "private": true,
+    "engines": {
+      "bun": ">=1.0.0"
+    },
+    "scripts": {
+        "dev": "bun run --watch src/index.ts",
+        "start": "bun run src/index.ts"
+    },
+    "devDependencies": {
+      "@lmdsgen/typescript-configs": "workspace:*",
+      "@types/bun": "latest"
+    },
+    "peerDependencies": {},
+    "dependencies": {}
+  }
+  

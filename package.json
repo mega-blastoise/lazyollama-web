@@ -1,0 +1,22 @@
+{
+  "name": "@lmdsgen/root",
+  "type": "module",
+  "engines": {
+    "bun": ">=1.0.0",
+    "node": ">=22.0.0"
+  },
+  "packageManager": "bun@1.1.34",
+  "workspaces": [
+    "core/**",
+    "packages/**"
+  ],
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "turbo": "^2.4.2"
+  }
+}
