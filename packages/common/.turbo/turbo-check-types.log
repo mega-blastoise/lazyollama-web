@@ -1,0 +1,5 @@
+
+[0m[2m[35m$[0m [2m[1mtsc -p tsconfig.json[0m
+TSFILE: /Users/nickgalante/mega-blastoise/LMDSGen/packages/common/out/lib/utils/log/index.d.ts
+TSFILE: /Users/nickgalante/mega-blastoise/LMDSGen/packages/common/out/lib/utils/index.d.ts
+TSFILE: /Users/nickgalante/mega-blastoise/LMDSGen/packages/common/out/lib/index.d.ts

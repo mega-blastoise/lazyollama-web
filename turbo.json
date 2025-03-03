@@ -20,6 +20,9 @@
       "lint": { 
         "dependsOn": ["prettier"] 
       },
+      "clean": {
+        "dependsOn": ["^clean"]
+      },
       "start": {
         "cache": false,
         "dependsOn": ["^start"]
