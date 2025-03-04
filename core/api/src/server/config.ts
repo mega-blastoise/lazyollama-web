@@ -9,13 +9,14 @@ type BunServerConfig<R = { [k: string]: RouterTypes.RouteValue<string> }> = Omit
   routes: R;
 } & {
   /**
-   * @deprecated Use `routes` instead in new code. This will continue to work for awhile though.
+   * @deprecated Use `routes` instead in new code.
    */
   static?: R;
 };
 
 function getBunServerConfig(): BunServerConfig {
   return {
+    hostname: process.env.HOSTNAME ?? '127.0.0.1',
     port: process.env.PORT ? parseInt(process.env.PORT) : 3000,
     routes: getApiServerRoutes(),
     fetch(_request, _server) {

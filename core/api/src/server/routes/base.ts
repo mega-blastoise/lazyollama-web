@@ -13,12 +13,12 @@ export function createHTTPMethodHandlerObject(
   handlers: Partial<ResponseHandlerObject>
 ): ResponseHandlerObject {
   return {
-    GET: pipeline<Request, Response>(middleware as any, handleMethodNotAllowed as any),
-    POST: pipeline<Request, Response>(middleware as any, handleMethodNotAllowed as any),
-    PUT: pipeline<Request, Response>(middleware as any, handleMethodNotAllowed as any),
-    DELETE: pipeline<Request, Response>(middleware as any, handleMethodNotAllowed as any),
-    PATCH: pipeline<Request, Response>(middleware as any, handleMethodNotAllowed as any),
-    OPTIONS: pipeline<Request, Response>(middleware as any, handleMethodNotAllowed as any),
+    GET: pipeline<Request, Response>(middleware, handleMethodNotAllowed),
+    POST: pipeline<Request, Response>(middleware, handleMethodNotAllowed),
+    PUT: pipeline<Request, Response>(middleware, handleMethodNotAllowed),
+    DELETE: pipeline<Request, Response>(middleware, handleMethodNotAllowed),
+    PATCH: pipeline<Request, Response>(middleware, handleMethodNotAllowed),
+    OPTIONS: pipeline<Request, Response>(middleware, handleMethodNotAllowed),
     ...handlers
   };
 }

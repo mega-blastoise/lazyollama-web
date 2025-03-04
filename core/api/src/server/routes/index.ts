@@ -4,6 +4,7 @@ import { pipeline } from '@lmdsgen/typescript-common';
 import { middleware } from '../middleware';
 import { createHTTPMethodHandlerObject } from './base';
 import { handleGETAPIStatusRequest } from './api-status';
+import { handlePOSTAPIRPCMethodRequest } from './api-rpc';
 
 type APIRoutes = {
   [k: string]: RouterTypes.RouteValue<string>;
@@ -12,12 +13,12 @@ type APIRoutes = {
 export function getApiServerRoutes(): APIRoutes {
   return {
     '/api/status': createHTTPMethodHandlerObject({
-      GET: pipeline<Request, Response>(middleware as any, handleGETAPIStatusRequest as any)
+      GET: pipeline<Request, Response>(middleware, handleGETAPIStatusRequest)
     }),
     '/api/rpc/controller': createHTTPMethodHandlerObject({
       POST: pipeline<Request, Response>(
-        middleware as any,
-        () => new Response('Not implemented')
+        middleware,
+        handlePOSTAPIRPCMethodRequest
       )
     })
   };

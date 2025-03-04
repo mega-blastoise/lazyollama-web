@@ -16,6 +16,7 @@ class RPCController {
   }
 
   async pullModel(model: string): Promise<RPCAPIResponse<any>> {
+    const requestTimestamp = performance.now();
     const timer = new Timer();
     timer.start();
     const ollama = LazyOllama.getInstance();
@@ -26,7 +27,12 @@ class RPCController {
     if (state[model]?.includes(OllamaClientCacheType.Running)) {
       timer.stop();
       return {
-        requested_method: 'pullModel'
+        requested_method: 'pullModel',
+        response_data: { model, status: 'already-running' },
+        request_accepted: true,
+        request_timestamp: requestTimestamp,
+        response_timestamp: performance.now(),
+        response_time_ms: timer.elapsed() || 0
       };
     }
     /**
@@ -35,7 +41,12 @@ class RPCController {
     if (state[model]?.includes(OllamaClientCacheType.Available)) {
       timer.stop();
       return {
-        requested_method: 'pullModel'
+        requested_method: 'pullModel',
+        response_data: { model, status: 'already-pulled' },
+        request_accepted: true,
+        request_timestamp: requestTimestamp,
+        response_timestamp: performance.now(),
+        response_time_ms: timer.elapsed() || 0
       };
     }
     /**
@@ -43,15 +54,25 @@ class RPCController {
      */
     const stream = false;
     const prestart = false;
+    /** 
+     * Offload this to the Bun promise task queue, 
+     * do not block response on pull 
+     * */
     ollama.pullModel(model, stream, prestart);
     timer.stop();
 
     return {
-      requested_method: 'pullModel'
+      requested_method: 'pullModel',
+      request_accepted: true,
+      request_timestamp: requestTimestamp,
+      response_timestamp: performance.now(),
+      response_time_ms: timer.elapsed() || 0,
+      response_data: { model, status: 'pull-queued' }
     };
   }
 
   async preheatModel(model: string): Promise<RPCAPIResponse<any>> {
+    const requestTimestamp = performance.now();
     const timer = new Timer();
     timer.start();
 
@@ -64,7 +85,12 @@ class RPCController {
     if (state[model]?.includes(OllamaClientCacheType.Running)) {
       timer.stop();
       return {
-        requested_method: 'preheatModel'
+        requested_method: 'preheatModel',
+        request_accepted: true,
+        request_timestamp: requestTimestamp,
+        response_timestamp: performance.now(),
+        response_time_ms: timer.elapsed() || 0,
+        response_data: { model, status: 'already-running' }
       };
     }
 
@@ -75,7 +101,12 @@ class RPCController {
       await ollama.startModel(model);
       timer.stop();
       return {
-        requested_method: 'preheatModel'
+        requested_method: 'preheatModel',
+        request_accepted: true,
+        request_timestamp: requestTimestamp,
+        response_timestamp: performance.now(),
+        response_time_ms: timer.elapsed() || 0,
+        response_data: { model, status: 'running' }
       };
     }
 
@@ -85,14 +116,22 @@ class RPCController {
     const stream = false;
     const prestart = true;
 
-    ollama.pullModel(model, stream, prestart);
+    await ollama.pullModel(model, stream, prestart);
+
+    timer.stop();
 
     return {
-      requested_method: 'preheatModel'
+      requested_method: 'preheatModel',
+      request_accepted: true,
+      request_timestamp: requestTimestamp,
+      response_timestamp: performance.now(),
+      response_time_ms: timer.elapsed() || 0,
+      response_data: { model, status: 'running' }
     };
   }
 
   async showModelStates(): Promise<RPCAPIResponse<any>> {
+    const requestTimestamp = performance.now();
     const timer = new Timer();
     timer.start();
 
@@ -103,7 +142,11 @@ class RPCController {
 
     return {
       requested_method: 'showModelStates',
-      response_data: state
+      response_data: state,
+      request_accepted: true,
+      request_timestamp: requestTimestamp,
+      response_timestamp: performance.now(),
+      response_time_ms: timer.elapsed() || 0
     };
   }
 }

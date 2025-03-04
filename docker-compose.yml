@@ -4,9 +4,9 @@ services:
     container_name: lmds-ollama
     healthcheck:
       test: ["CMD-SHELL", "apt-get update && apt-get install -y curl && curl -f http://localhost:11434/ && apt-get clean && rm -rf /var/lib/apt/lists/*"]
-      interval: 10s
-      timeout: 3s
-      retries: 3
+      interval: 5s
+      timeout: 5s
+      retries: 10
     restart: unless-stopped
     ports:
       - "11434:11434"
