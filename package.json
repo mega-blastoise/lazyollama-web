@@ -13,10 +13,12 @@
   "scripts": {
     "clean": "turbo run clean",
     "check-types": "turbo run check-types",
-    "build": "turbo run build"
+    "build": "turbo run build",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx}\" --ignore-path .gitignore"
   },
   "devDependencies": {
     "@types/bun": "^1.2.4",
+    "prettier": "^3.5.3",
     "tsc-alias": "^1.8.11"
   },
   "peerDependencies": {

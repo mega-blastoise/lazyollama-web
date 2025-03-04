@@ -33,5 +33,8 @@
         "debug": "^4.4.0",
         "node-emoji": "^2.2.0",
         "typescript": "^5.0.0"
+    },
+    "dependencies": {
+        "sleepydogs": "1.0.8-alpha.2"
     }
 }

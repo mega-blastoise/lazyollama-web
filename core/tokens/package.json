@@ -33,7 +33,7 @@
     "sass": "sass --style=expanded --charset --quiet --no-source-map --color lib/styles:out/css",
     "postcss": "postcss out/css/paldea.css --no-map --use autoprefixer cssnano --output out/css/paldea.min.css",
     "del:css": "rm -rf out/css/vendor && rm -rf out/css/modern-reset.css && rm -rf out/css/font.css",
-    "build": "run-s clean style-dictionary bundle cp-sass sass del:css postcss",
+    "#build": "run-s clean style-dictionary bundle cp-sass sass del:css postcss",
     "clean": "rm -rf out",
     "docs-css": "cp out/css/paldea.min.css public/paldea.min.css",
     "docs": "bunx serve ./public -p 8080",

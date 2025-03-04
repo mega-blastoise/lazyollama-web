@@ -6,5 +6,5 @@ export {
   type ChatPromptConfiguration,
   type ChatPromptFinalResponse,
   type RunningModelConfiguration,
-  type RunningModelResponse,
-} from "./Ollama";
+  type RunningModelResponse
+} from './Ollama';

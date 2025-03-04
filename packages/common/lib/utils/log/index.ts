@@ -5,7 +5,7 @@ import { emojify } from 'node-emoji';
 type XDebugger = debug.Debugger & {
   textOptions?: Record<string, boolean>;
   setTextOptions(options?: Record<string, boolean>): void;
-}
+};
 
 type Level = 'info' | 'debug' | 'warn' | 'error';
 
@@ -26,19 +26,13 @@ export function createLogger($namespace: string) {
           const emojifiedArgArray = argArray.map((arg) => {
             if (typeof arg === 'string') {
               /** Modify text string with chalk options */
-              if (
-                thisArg &&
-                (typeof thisArg === 'function' || typeof thisArg === 'object')
-              ) {
+              if (thisArg && (typeof thisArg === 'function' || typeof thisArg === 'object')) {
                 if (Object.hasOwn(thisArg, 'textOptions')) {
                   const textOptions = thisArg?.textOptions || {};
                   for (const key of Object.keys(textOptions)) {
                     if (textOptions[key] && Object.hasOwn(chalk, key)) {
                       const chalkModififier = (chalk as any)[key];
-                      if (
-                        chalkModififier &&
-                        typeof chalkModififier === 'function'
-                      ) {
+                      if (chalkModififier && typeof chalkModififier === 'function') {
                         arg = chalkModififier(arg);
                       }
                     }
@@ -62,7 +56,7 @@ export function createLogger($namespace: string) {
           value: options,
           writable: true,
           enumerable: true
-        })
+        });
       }
     });
   }

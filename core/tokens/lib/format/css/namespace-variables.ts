@@ -1,7 +1,7 @@
-import StyleDictionary, { type Format } from "style-dictionary";
+import StyleDictionary, { type Format } from 'style-dictionary';
 
 export default {
-  name: "cf/css/namespaced-variables",
+  name: 'cf/css/namespaced-variables',
   /**
    * This format generates a CSS file with a class selector for the given
    * namespace (defaults to 'paldea') and applies all the variables as CSS
@@ -25,12 +25,12 @@ export default {
    */
   formatter: function (args) {
     const { dictionary, file, options } = args;
-    const { outputReferences, namespace = "paldea" } = options;
+    const { outputReferences, namespace = 'paldea' } = options;
     const namespaceSelector = `.${namespace}-theme`;
     const header = StyleDictionary.formatHelpers.fileHeader({
       file,
-      commentStyle: "long",
+      commentStyle: 'long'
     });
-    return `${header}\n${namespaceSelector},\n:root {\n${StyleDictionary.formatHelpers.formattedVariables({ dictionary, outputReferences, format: "css" })}\n}\n`;
-  },
+    return `${header}\n${namespaceSelector},\n:root {\n${StyleDictionary.formatHelpers.formattedVariables({ dictionary, outputReferences, format: 'css' })}\n}\n`;
+  }
 } as Format;

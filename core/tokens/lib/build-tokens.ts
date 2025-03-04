@@ -1,5 +1,5 @@
-import StyleDictionary from "style-dictionary";
-import config from "./config";
+import StyleDictionary from 'style-dictionary';
+import config from './config';
 import * as customFormatters from './format';
 import customTransforms from './transform';
 /**
@@ -11,9 +11,11 @@ async function buildTokens() {
     StyleDictionary.registerTransform(customTransforms.prefix as any);
     StyleDictionary.extend(config).buildAllPlatforms();
   } catch (e) {
-    console.error("Failed to build tokens");
+    console.error('Failed to build tokens');
     console.error(e);
   }
 }
 
-await buildTokens().then(() => { console.log('Done!');});
+await buildTokens().then(() => {
+  console.log('Done!');
+});

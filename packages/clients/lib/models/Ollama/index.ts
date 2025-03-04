@@ -1,12 +1,13 @@
-import { createLogger } from "@lmdsgen/typescript-common";
+import { LazySingleton as SuperLazySingletonFactory } from 'sleepydogs';
+import { createLogger } from '@lmdsgen/typescript-common';
 
 export enum OllamaClientCacheType {
-  PullQueued = "pull-queued",
-  PullCompleted = "pull-completed",
-  Running = "running",
-  Stopped = "stopped",
-  Available = "available",
-  PullCancelled = "pull-cancelled" /** This currently will be synonymous with failure */,
+  PullQueued = 'pull-queued',
+  PullCompleted = 'pull-completed',
+  Running = 'running',
+  Stopped = 'stopped',
+  Available = 'available',
+  PullCancelled = 'pull-cancelled' /** This currently will be synonymous with failure */
 }
 
 export type AdHocJsonSchema = {
@@ -33,7 +34,7 @@ export type ChatPromptConfiguration = {
   suffix?: string;
   images?: Array<Base64URLString>;
   /** the format to return a response in. Format can be json or a JSON schema */
-  format?: "json" | AdHocJsonSchema;
+  format?: 'json' | AdHocJsonSchema;
   /** additional model parameters listed in the documentation for the Modelfile such as temperature */
   options?: Record<string, any>;
   /** system message to (overrides what is defined in the Modelfile) */
@@ -75,7 +76,7 @@ export type ChatPromptFinalResponse = {
 export class OllamaClient {
   private baseUrl = process.env.DOCKER_NETWORK_OLLAMA_API_URL;
   private cache = new Map<string, Set<string>>();
-  private logger = createLogger("lmgen:typescript:common:ollama:client");
+  private logger = createLogger('lmgen:typescript:common:ollama:client');
 
   constructor() {
     this.cache.set(OllamaClientCacheType.PullQueued, new Set());
@@ -118,13 +119,13 @@ export class OllamaClient {
     try {
       const body = JSON.stringify(payload);
       const response = await Bun.fetch(`${this.baseUrl}${endpoint}`, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          "Content-Length": body.length.toString(),
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+          'Content-Length': body.length.toString()
         },
-        body,
+        body
       });
       return response.json() as T;
     } catch (error) {
@@ -138,19 +139,16 @@ export class OllamaClient {
    * @param endpoint The endpoint to send the GET request to.
    * @returns The response from the API, parsed as JSON.
    */
-  private async _get<T>(
-    endpoint: string,
-    responseType: "json" | "text" = "json"
-  ) {
+  private async _get<T>(endpoint: string, responseType: 'json' | 'text' = 'json') {
     try {
       const response = await Bun.fetch(`${this.baseUrl}${endpoint}`, {
-        method: "GET",
+        method: 'GET',
         headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        }
       });
-      return responseType === "json"
+      return responseType === 'json'
         ? (response.json() as T)
         : (response.text() as Promise<string>);
     } catch (error) {
@@ -172,7 +170,7 @@ export class OllamaClient {
    * @returns A list of running models.
    */
   async getRunningModels(): Promise<RunningModelResponse> {
-    return this._get("/api/ps") as Promise<RunningModelResponse>;
+    return this._get('/api/ps') as Promise<RunningModelResponse>;
   }
 
   /**
@@ -180,10 +178,7 @@ export class OllamaClient {
    * @param model The name of the model to pull.
    * @param stream Whether to stream the response.
    */
-  async pullModel(
-    model: string,
-    stream = false // Streaming would be optimized but we're not going to block on pulling a model, we'll do this a different way with event based tracking
-  ): Promise<void> {
+  async pullModel(model: string, stream = false, prestart = true): Promise<void> {
     try {
       const payload = { model, stream };
       const cache = this.cache.get(OllamaClientCacheType.PullQueued)!;
@@ -194,20 +189,23 @@ export class OllamaClient {
       }
 
       const onSuccess = ({ status }: { status: string }) => {
-        if (status === "success") {
+        if (status === 'success') {
           this.cache.get(OllamaClientCacheType.PullQueued)!.delete(model);
           this.cache.get(OllamaClientCacheType.PullCompleted)!.add(model);
           this.cache.get(OllamaClientCacheType.Available)!.add(model);
           this.logger.info(`Pulled model ${model}`);
 
           /** Preload the model into memory pre-emptively */
-          this.startModel(model);
+          if (prestart) this.startModel(model);
         } else {
           this.logger.error(`Error pulling model ${model}: ${status}`);
           this.cache.get(OllamaClientCacheType.PullCancelled)!.add(model);
-          setTimeout(() => {
-            this.cache.get(OllamaClientCacheType.PullCancelled)!.delete(model);
-          }, 60 * 60 * 1000); // 1 hour
+          setTimeout(
+            () => {
+              this.cache.get(OllamaClientCacheType.PullCancelled)!.delete(model);
+            },
+            60 * 60 * 1000
+          ); // 1 hour
           this.cache.get(OllamaClientCacheType.PullQueued)!.delete(model);
         }
       };
@@ -222,7 +220,7 @@ export class OllamaClient {
         this.cache.get(OllamaClientCacheType.PullQueued)!.delete(model);
       };
 
-      this._post<{ status: string }, typeof payload>("/api/pull", payload)
+      this._post<{ status: string }, typeof payload>('/api/pull', payload)
         .then(onSuccess)
         .catch(onError);
     } catch (e) {
@@ -261,7 +259,7 @@ export class OllamaClient {
     };
 
     return this._post<ChatPromptFinalResponse, ChatPromptConfiguration>(
-      "/api/generate",
+      '/api/generate',
       payload
     )
       .then(onSuccess)
@@ -275,7 +273,7 @@ export class OllamaClient {
    * @param stream Whether to use a streaming response.
    */
   async promptModel(prompt: ChatPromptConfiguration): Promise<any> {
-    return this._post("/api/generate", { ...prompt, stream: false });
+    return this._post('/api/generate', { ...prompt, stream: false });
   }
 
   /**
@@ -287,10 +285,10 @@ export class OllamaClient {
     const payload: ChatPromptConfiguration = {
       model,
       keep_alive: 0,
-      stream: false,
+      stream: false
     };
     return this._post<ChatPromptFinalResponse, ChatPromptConfiguration>(
-      "/api/generate",
+      '/api/generate',
       payload
     );
   }
@@ -300,12 +298,8 @@ export class OllamaClient {
    */
   async cleanupMemory(): Promise<any[] | null> {
     /** Could also use the cache here, might be faster */
-    const running = await this._get<{ models: { name: string }[] }>("/api/ps");
-    if (
-      typeof running !== "string" &&
-      running.models &&
-      Array.isArray(running.models)
-    ) {
+    const running = await this._get<{ models: { name: string }[] }>('/api/ps');
+    if (typeof running !== 'string' && running.models && Array.isArray(running.models)) {
       const unloadPromises = running.models.map((m) => this.stopModel(m.name));
       return Promise.all(unloadPromises);
     }
@@ -313,4 +307,6 @@ export class OllamaClient {
   }
 }
 
-export default OllamaClient;
+export default SuperLazySingletonFactory(OllamaClient) as ReturnType<
+  typeof SuperLazySingletonFactory<OllamaClient>
+>;

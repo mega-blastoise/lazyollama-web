@@ -8,6 +8,7 @@
       },
       "devDependencies": {
         "@types/bun": "^1.2.4",
+        "prettier": "^3.5.3",
         "tsc-alias": "^1.8.11",
       },
       "peerDependencies": {
@@ -18,8 +19,10 @@
       "name": "@lmdsgen/api",
       "version": "0.0.1-alpha.0.1",
       "dependencies": {
+        "@lmdsgen/typescript-clients": "workspace:*",
         "@lmdsgen/typescript-common": "workspace:*",
         "debug": "^4.4.0",
+        "sleepydogs": "1.0.8-alpha.2",
       },
       "devDependencies": {
         "@lmdsgen/typescript-configs": "workspace:*",
@@ -48,6 +51,9 @@
     "packages/clients": {
       "name": "@lmdsgen/typescript-clients",
       "version": "0.0.1-alpha.0.1",
+      "dependencies": {
+        "sleepydogs": "1.0.8-alpha.2",
+      },
       "devDependencies": {
         "@lmdsgen/typescript-configs": "workspace:*",
         "@types/bun": "latest",
@@ -646,6 +652,8 @@
 
     "postcss-value-parser": ["postcss-value-parser@4.2.0", "", {}, "sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ=="],
 
+    "prettier": ["prettier@3.5.3", "", { "bin": { "prettier": "bin/prettier.cjs" } }, "sha512-QQtaxnoDJeAkDvDKWCLiwIXkTgRhwYDEQCghU9Z6q03iyek/rxRh/2lC3HB7P8sWT2xC/y5JDctPLBIGzHKbhw=="],
+
     "pretty-hrtime": ["pretty-hrtime@1.0.3", "", {}, "sha512-66hKPCr+72mlfiSjlEB1+45IjXSqvVAIy6mocupoww4tBFE9R9IhwwUGoI4G++Tc9Aq+2rxOt0RFU6gPcrte0A=="],
 
     "queue-lit": ["queue-lit@1.5.2", "", {}, "sha512-tLc36IOPeMAubu8BkW8YDBV+WyIgKlYU7zUNs0J5Vk9skSZ4JfGlPOqplP0aHdfv7HL0B2Pg6nwiq60Qc6M2Hw=="],
@@ -709,6 +717,8 @@
     "skin-tone": ["skin-tone@2.0.0", "", { "dependencies": { "unicode-emoji-modifier-base": "^1.0.0" } }, "sha512-kUMbT1oBJCpgrnKoSr0o6wPtvRWT9W9UKvGLwfJYO2WuahZRHOpEyL1ckyMGgMWh0UdpmaoFqKKD29WTomNEGA=="],
 
     "slash": ["slash@5.1.0", "", {}, "sha512-ZA6oR3T/pEyuqwMgAKT0/hAv8oAXckzbkmR0UkUosQ+Mc4RxGoJkRmwHgHufaenlyAgE1Mxgpdcrf75y6XcnDg=="],
+
+    "sleepydogs": ["sleepydogs@1.0.8-alpha.2", "", {}, "sha512-I53+mZcPBnjIEeM7IwdEqJVY8fXx8Gfj/r2w7KsozzG7vMpBG9+/NSt1aEVrKHQ5GD+yH65W2/HKG3cC0TdvHQ=="],
 
     "snake-case": ["snake-case@3.0.4", "", { "dependencies": { "dot-case": "^3.0.4", "tslib": "^2.0.3" } }, "sha512-LAOh4z89bGQvl9pFfNF8V146i7o7/CqFPbqzYgP+yYzDIDeS9HaNFtXABamRW+AQzEVODcvE79ljJ+8a9YSdMg=="],
 

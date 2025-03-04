@@ -1,5 +1,5 @@
 import prefix from './prefix';
 const customTransforms = {
-    prefix
+  prefix
 };
 export default customTransforms;

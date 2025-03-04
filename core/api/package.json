@@ -19,6 +19,8 @@
   "peerDependencies": {},
   "dependencies": {
     "@lmdsgen/typescript-common": "workspace:*",
-    "debug": "^4.4.0"
+    "@lmdsgen/typescript-clients": "workspace:*",
+    "debug": "^4.4.0",
+    "sleepydogs": "1.0.8-alpha.2"
   }
 }
