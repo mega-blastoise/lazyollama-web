@@ -9,7 +9,8 @@
   },
   "scripts": {
     "dev": "bun run --watch src/index.ts",
-    "start": "bun run src/index.ts"
+    "start": "bun run src/index.ts",
+    "docker": "DEBUG=* NODE_ENV=production bun start"
   },
   "devDependencies": {
     "@lmdsgen/typescript-configs": "workspace:*",

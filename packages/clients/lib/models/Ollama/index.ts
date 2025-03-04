@@ -108,6 +108,19 @@ export class OllamaClient {
     return state;
   }
 
+  getStateOfCaches() {
+    const state: Record<string, Array<string>> = {};
+    for (const [key, value] of this.cache) {
+      for (const model of value) {
+        if (!state[model]) {
+          state[model] = [];
+        }
+        state[model].push(key);
+      }
+    }
+    return state;
+  }
+
   /**
    * Performs a POST request to the Ollama API at the given endpoint,
    * with the given payload.

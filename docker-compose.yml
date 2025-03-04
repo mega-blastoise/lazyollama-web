@@ -1,7 +1,7 @@
 services:
   ollama:
     image: ollama/ollama:latest
-    container_name: ollama
+    container_name: lmds-ollama
     healthcheck:
       test: ["CMD-SHELL", "apt-get update && apt-get install -y curl && curl -f http://localhost:11434/ && apt-get clean && rm -rf /var/lib/apt/lists/*"]
       interval: 10s
@@ -14,6 +14,30 @@ services:
       - '11434'
     volumes:
       - ollama:/root/.ollama
+    networks:
+      - lmdsgen-backend
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.API
+    image: lmds/api:latest
+    container_name: lmds-api
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:3000"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    expose:
+      - '3000'
+    depends_on:
+      ollama:
+        condition: service_healthy
+        restart: true
+    env_file:
+      - ./core/api/.env
     networks:
       - lmdsgen-backend
 
