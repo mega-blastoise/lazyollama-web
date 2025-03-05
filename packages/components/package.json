@@ -1,0 +1,49 @@
+{
+  "name": "@lazyrepo/typescript-react-components",
+  "type": "module",
+  "packageManager": "bun@1.34.0",
+  "version": "0.0.1-alpha.0.1",
+  "private": true,
+  "types": "./out/lib/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./out/lib/index.js",
+      "types": "./out/lib/index.d.ts",
+      "default": "./out/lib/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "check-types": "tsc -p tsconfig.json",
+    "build": "bun run build.ts",
+    "clean": "rm -rf out",
+    "test": "bun test",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^3.2.5",
+    "@lazyrepo/typescript-configs": "workspace:*",
+    "@storybook/addon-essentials": "^8.6.4",
+    "@storybook/addon-interactions": "^8.6.4",
+    "@storybook/addon-onboarding": "^8.6.4",
+    "@storybook/addon-webpack5-compiler-swc": "^2.1.0",
+    "@storybook/blocks": "^8.6.4",
+    "@storybook/react": "^8.6.4",
+    "@storybook/react-webpack5": "^8.6.4",
+    "@storybook/test": "^8.6.4",
+    "@types/bun": "latest",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "storybook": "^8.6.4"
+  },
+  "peerDependencies": {
+    "@lazyrepo/typescript-common": "workspace:*",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "sleepydogs": "1.0.8-alpha.2"
+  }
+}
