@@ -1,5 +1,5 @@
-import { RouterTypes } from 'bun';
-import { pipeline } from '@lmdsgen/typescript-common';
+import { type RouterTypes } from 'bun';
+import { pipeline } from '@lazyrepo/typescript-common';
 
 import { middleware } from '../middleware';
 import { createHTTPMethodHandlerObject } from './base';

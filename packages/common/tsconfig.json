@@ -1,5 +1,5 @@
 {
-    "extends": "@lmdsgen/typescript-configs/typescript/library.tsconfig.json",
+    "extends": "@lazyrepo/typescript-configs/typescript/library.tsconfig.json",
     "compilerOptions": {
 
         "lib": ["ESNext", "DOM"],

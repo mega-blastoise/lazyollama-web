@@ -1,6 +1,10 @@
 {
-  "name": "@lmdsgen/root",
+  "name": "@lazyrepo/root",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
   "engines": {
     "bun": ">=1.2.3",
     "node": ">=22.0.0"

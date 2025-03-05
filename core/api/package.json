@@ -1,5 +1,5 @@
 {
-  "name": "@lmdsgen/api",
+  "name": "@lazyrepo/api",
   "type": "module",
   "packageManager": "bun@1.2.3",
   "version": "0.0.1-alpha.0.1",
@@ -13,14 +13,14 @@
     "docker": "DEBUG=* NODE_ENV=production bun start"
   },
   "devDependencies": {
-    "@lmdsgen/typescript-configs": "workspace:*",
+    "@lazyrepo/typescript-configs": "workspace:*",
     "@types/bun": "latest",
     "@types/debug": "^4.1.12"
   },
   "peerDependencies": {},
   "dependencies": {
-    "@lmdsgen/typescript-common": "workspace:*",
-    "@lmdsgen/typescript-clients": "workspace:*",
+    "@lazyrepo/typescript-common": "workspace:*",
+    "@lazyrepo/typescript-clients": "workspace:*",
     "debug": "^4.4.0",
     "sleepydogs": "1.0.8-alpha.2"
   }

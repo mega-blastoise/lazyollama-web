@@ -1,4 +1,4 @@
-import { pipeline } from '@lmdsgen/typescript-common';
+import { pipeline } from '@lazyrepo/typescript-common';
 import { middleware } from '../middleware';
 
 export function handleMethodNotAllowed(request: Request): Response {

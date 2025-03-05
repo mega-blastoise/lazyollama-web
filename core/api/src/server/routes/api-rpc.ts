@@ -1,5 +1,5 @@
 import logger from '../../log';
-import RPCController from '../controller';
+import RPCController, { RPCControllerMethods } from '../controller';
 
 type RPCRequestBody = {
   method: string;
@@ -19,7 +19,13 @@ export async function handlePOSTAPIRPCMethodRequest(r: Request | Response): Prom
       return new Response('Method Not Allowed', { status: 405 });
     }
 
-    const response = await controller[method](...params);
+    const fn = controller.getMethod(method as keyof RPCControllerMethods);
+
+    if (!fn) {
+      return new Response('Method Not Allowed', { status: 405 });
+    }
+
+    const response = await fn.call(controller, ...params);
 
     logger.debug('response from method %s %o', method, response);
 

@@ -1,0 +1,8 @@
+{
+    "extends": "@lazyrepo/typescript-configs/typescript/jsx.tsconfig.json",
+    "compilerOptions": {
+        "esModuleInterop": true
+    },
+    "include": ["src", "public/app"],
+    "exclude": ["node_modules"]
+}

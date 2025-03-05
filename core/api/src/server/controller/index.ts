@@ -1,7 +1,11 @@
 import { Timer } from 'sleepydogs';
-import { Ollama as LazyOllama, OllamaClientCacheType } from '@lmdsgen/typescript-clients';
+import { Ollama as LazyOllama, OllamaClientCacheType } from '@lazyrepo/typescript-clients';
 
-type RPCAPIResponse<T> = {
+/**
+ * Represents the structure of an RPC API response.
+ * @template T - The type of the response data.
+ */
+export type RPCAPIResponse<T> = {
   requested_method: keyof RPCController;
   request_timestamp?: number;
   request_accepted?: boolean;
@@ -10,9 +14,39 @@ type RPCAPIResponse<T> = {
   response_time_ms?: number;
 };
 
-class RPCController {
+/**
+ * Utility type to exclude specific methods from a type.
+ * @template T - The type to exclude methods from.
+ * @template OmitKeys - The keys of the methods to exclude.
+ */
+export type ExcludeMethods<T, OmitKeys extends keyof T> = {
+  [K in keyof T as K extends OmitKeys ? never : K]: T[K];
+};
+
+/**
+ * Type representing the methods of RPCController excluding 'hasMethod' and 'getMethod'.
+ */
+export type RPCControllerMethods = ExcludeMethods<RPCController, 'hasMethod' | 'getMethod'>;
+
+export class RPCController {
+  /**
+   * Checks if a method exists in the controller.
+   * @param {string} name - The name of the method.
+   * @returns {boolean} - True if the method exists, false otherwise.
+   */
   hasMethod(name: string): boolean {
     return name in this;
+  }
+
+  /**
+   * Retrieves a method from the controller.
+   * @param {keyof RPCControllerMethods} name - The name of the method to retrieve.
+   * @returns {RPCControllerMethods[keyof RPCControllerMethods]} - The method from the controller.
+   */
+  getMethod(
+    name: keyof RPCControllerMethods
+  ): RPCControllerMethods[keyof RPCControllerMethods] {
+    return this[name];
   }
 
   async pullModel(model: string): Promise<RPCAPIResponse<any>> {
@@ -54,9 +88,9 @@ class RPCController {
      */
     const stream = false;
     const prestart = false;
-    /** 
-     * Offload this to the Bun promise task queue, 
-     * do not block response on pull 
+    /**
+     * Offload this to the Bun promise task queue,
+     * do not block response on pull
      * */
     ollama.pullModel(model, stream, prestart);
     timer.stop();

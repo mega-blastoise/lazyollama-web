@@ -1,5 +1,5 @@
 {
-    "name": "@lmdsgen/typescript-configs",
+    "name": "@lazyrepo/typescript-configs",
     "version": "0.0.0",
     "private": true,
     "publishConfig": {

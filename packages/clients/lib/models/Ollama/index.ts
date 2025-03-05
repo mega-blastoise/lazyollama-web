@@ -1,5 +1,5 @@
 import { LazySingleton as SuperLazySingletonFactory } from 'sleepydogs';
-import { createLogger } from '@lmdsgen/typescript-common';
+import { createLogger } from '@lazyrepo/typescript-common';
 
 export enum OllamaClientCacheType {
   PullQueued = 'pull-queued',

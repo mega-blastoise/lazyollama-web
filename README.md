@@ -1,15 +1,12 @@
-# lmdsgen
+# Name of this project
 
-To install dependencies:
+## Motivation
 
-```bash
-bun install
-```
+## Getting Started
 
-To run:
+### Running This Locally
 
-```bash
-bun run index.ts
-```
+## Opinions _(These are ours, if you like them, take them with you. If you don't, then you've equally grown, just in the other direction.)_
 
-This project was created using `bun init` in bun v1.1.34. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+1. This project does not use a linter like eslint. When I was younger, and more venerable, I would have launched into a rant about how linting in the js ecosystem specifically is an anti DX construct, that maintain the effect of slowing down the competent javascript developer. I still hold that opinion, but I'm older and tired, so no rant.  
+2. You only need to know about 5% of something to get started.  
