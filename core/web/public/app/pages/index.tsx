@@ -1,7 +1,5 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
+import { renderComponentToDom  } from '../lib/mount';
+import { Home } from '../components/home';
 
-const mount = document.getElementById('app')!;
-const root = createRoot(mount);
-console.log(root);
-root.render()
+renderComponentToDom(Home);
