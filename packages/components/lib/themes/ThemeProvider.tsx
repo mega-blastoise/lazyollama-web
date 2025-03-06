@@ -23,39 +23,37 @@ interface ThemeProviderProps {
   initialTheme?: Theme;
 }
 
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({ 
-  children, 
-  initialTheme = 'light' 
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({
+  children,
+  initialTheme = 'light'
 }) => {
   const [theme, setTheme] = useState<Theme>(() => {
     // Check for saved theme preference in localStorage
     const savedTheme = localStorage.getItem('theme') as Theme | null;
-    
+
     // Check for system preference
     if (!savedTheme && window.matchMedia) {
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       return prefersDark ? 'dark' : 'light';
     }
-    
+
     return savedTheme || initialTheme;
   });
 
   useEffect(() => {
     // Update data-theme attribute on document
     document.documentElement.setAttribute('data-theme', theme);
-    
+
     // Save theme preference to localStorage
     localStorage.setItem('theme', theme);
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
+    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>
   );
 };
 

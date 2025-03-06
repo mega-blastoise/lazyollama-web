@@ -2,7 +2,6 @@ import './Button.css';
 import React, { ButtonHTMLAttributes } from 'react';
 import { ButtonProps } from './types';
 
-
 export const Button: React.FC<ButtonProps> = ({
   children,
   variant = 'primary',
@@ -22,14 +21,12 @@ export const Button: React.FC<ButtonProps> = ({
     isFullWidth ? 'sb-button-full-width' : '',
     isLoading ? 'sb-button-loading' : '',
     className
-  ].filter(Boolean).join(' ');
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   return (
-    <button
-      className={buttonClasses}
-      disabled={disabled || isLoading}
-      {...rest}
-    >
+    <button className={buttonClasses} disabled={disabled || isLoading} {...rest}>
       {isLoading && (
         <span className="sb-button-loader">
           <span className="sb-button-loader-dot"></span>

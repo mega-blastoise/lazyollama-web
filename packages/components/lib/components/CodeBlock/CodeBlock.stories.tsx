@@ -12,6 +12,19 @@ export default meta;
 type CodeBlockStory = StoryObj<typeof CodeBlock>;
 
 export const Default: CodeBlockStory = {
-  args: { title: 'CodeBlock', code: "let test = test code", language: 'js' },
+  args: {
+    title: 'Example Code',
+    code: `function helloWorld() {
+      console.log("Hello World!");
+      return true;
+    }
+    
+    // This is a multi-line code example
+    const sum = (a, b) => {
+      return a + b;
+    };`,
+    language: 'javascript',
+    showLineNumbers: true
+  },
   render: (args) => <CodeBlock {...args} />
 };

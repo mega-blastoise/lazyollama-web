@@ -2,7 +2,6 @@ import React, { HTMLAttributes, ElementType } from 'react';
 import './Typography.css';
 import { TypographyProps, TypographyVariant } from './types';
 
-
 export const Typography: React.FC<TypographyProps> = ({
   children,
   variant = 'body1',
@@ -29,7 +28,9 @@ export const Typography: React.FC<TypographyProps> = ({
     gutterBottom ? 'sb-typography-gutter-bottom' : '',
     truncate ? 'sb-typography-truncate' : '',
     className
-  ].filter(Boolean).join(' ');
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   return (
     <Component className={typographyClasses} {...rest}>

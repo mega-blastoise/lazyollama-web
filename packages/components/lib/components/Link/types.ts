@@ -1,4 +1,4 @@
-import { AnchorHTMLAttributes } from "react";
+import { AnchorHTMLAttributes } from 'react';
 
 export type LinkVariant = 'default' | 'primary' | 'secondary' | 'subtle' | 'nav';
 

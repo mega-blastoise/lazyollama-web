@@ -12,6 +12,6 @@ export default meta;
 type SearchInputStory = StoryObj<typeof SearchInput>;
 
 export const Default: SearchInputStory = {
-  args: { },
+  args: {},
   render: (args) => <SearchInput {...args} />
 };
