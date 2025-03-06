@@ -1,5 +1,5 @@
 import { Timer } from 'sleepydogs';
-import { Ollama as LazyOllama, OllamaClientCacheType } from '@lazyrepo/typescript-clients';
+import { Ollama as LazyOllama, OllamaClientCacheType } from '@lazyollama/typescript-clients';
 
 /**
  * Represents the structure of an RPC API response.

@@ -1,3 +1,3 @@
-import { createLogger } from '@lazyrepo/typescript-common';
+import { createLogger } from '@lazyollama/typescript-common';
 
-export default createLogger('lmgen-api');
+export default createLogger('lazyollama-api');

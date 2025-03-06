@@ -1,5 +1,5 @@
 {
-    "extends": "@lazyrepo/typescript-configs/typescript/jsx.tsconfig.json",
+    "extends": "@lazyollama/typescript-configs/typescript/jsx.tsconfig.json",
     "compilerOptions": {
         "esModuleInterop": true
     },

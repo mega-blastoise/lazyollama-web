@@ -1,7 +1,7 @@
 services:
   ollama:
     image: ollama/ollama:latest
-    container_name: lmds-ollama
+    container_name: lazyollama
     healthcheck:
       test: ["CMD-SHELL", "apt-get update && apt-get install -y curl && curl -f http://localhost:11434/ && apt-get clean && rm -rf /var/lib/apt/lists/*"]
       interval: 5s
@@ -9,19 +9,19 @@ services:
       retries: 10
     restart: unless-stopped
     ports:
-      - "11434:11434"
+      - "11435:11434" # Remap external port in case user is already running Ollama 
     expose:
-      - '11434'
+      - '11434' # Expose container port 11434 (internal, optional)
     volumes:
       - ollama:/root/.ollama
     networks:
-      - lmdsgen-backend
+      - lazyollama-backend
   api:
     build:
       context: .
       dockerfile: Dockerfile.API
-    image: lmds/api:latest
-    container_name: lmds-api
+    image: lazyollama/api:latest
+    container_name: lazyollama-api
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost:3000"]
       interval: 5s
@@ -39,10 +39,10 @@ services:
     env_file:
       - ./core/api/.env
     networks:
-      - lmdsgen-backend
+      - lazyollama-backend
 
 networks:
-  lmdsgen-backend:
+  lazyollama-backend:
 
 volumes:
   ollama:
