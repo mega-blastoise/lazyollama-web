@@ -1,4 +1,4 @@
-import { Ollama as LazyOllama } from '@lazyrepo/typescript-clients';
+import { Ollama as LazyOllama } from '@lazyollama/typescript-clients';
 
 import logger from './log';
 import { createRunningBunServer } from './server';

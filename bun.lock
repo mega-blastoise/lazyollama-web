@@ -2,7 +2,7 @@
   "lockfileVersion": 1,
   "workspaces": {
     "": {
-      "name": "@lazyrepo/root",
+      "name": "@lazyollama/root",
       "dependencies": {
         "turbo": "^2.4.2",
       },
@@ -16,29 +16,29 @@
       },
     },
     "core/api": {
-      "name": "@lazyrepo/api",
+      "name": "@lazyollama/api",
       "version": "0.0.1-alpha.0.1",
       "dependencies": {
-        "@lazyrepo/typescript-clients": "workspace:*",
-        "@lazyrepo/typescript-common": "workspace:*",
+        "@lazyollama/typescript-clients": "workspace:*",
+        "@lazyollama/typescript-common": "workspace:*",
         "debug": "^4.4.0",
         "sleepydogs": "1.0.8-alpha.2",
       },
       "devDependencies": {
-        "@lazyrepo/typescript-configs": "workspace:*",
+        "@lazyollama/typescript-configs": "workspace:*",
         "@types/bun": "latest",
         "@types/debug": "^4.1.12",
       },
     },
     "core/tokens": {
-      "name": "@lazyrepo/design-tokens",
+      "name": "@lazyollama/design-tokens",
       "version": "0.0.1-alpha.0.1",
       "dependencies": {
         "style-dictionary": "3",
         "tsx": "^4.19.3",
       },
       "devDependencies": {
-        "@lazyrepo/typescript-configs": "workspace:*",
+        "@lazyollama/typescript-configs": "workspace:*",
         "@types/bun": "latest",
         "autoprefixer": "^10.4.20",
         "cssnano": "^7.0.6",
@@ -49,11 +49,11 @@
       },
     },
     "core/web": {
-      "name": "@lazyrepo/web",
+      "name": "@lazyollama/web",
       "version": "0.0.1-alpha.0.1",
       "dependencies": {
-        "@lazyrepo/typescript-clients": "workspace:*",
-        "@lazyrepo/typescript-common": "workspace:*",
+        "@lazyollama/typescript-clients": "workspace:*",
+        "@lazyollama/typescript-common": "workspace:*",
         "chalk": "^5.4.1",
         "debug": "^4.4.0",
         "node-emoji": "^2.2.0",
@@ -63,7 +63,7 @@
         "web-vitals": "^4.2.4",
       },
       "devDependencies": {
-        "@lazyrepo/typescript-configs": "workspace:*",
+        "@lazyollama/typescript-configs": "workspace:*",
         "@types/bun": "latest",
         "@types/debug": "^4.1.12",
         "@types/react": "^19.0.10",
@@ -71,13 +71,13 @@
       },
     },
     "packages/clients": {
-      "name": "@lazyrepo/typescript-clients",
+      "name": "@lazyollama/typescript-clients",
       "version": "0.0.1-alpha.0.1",
       "dependencies": {
         "sleepydogs": "1.0.8-alpha.2",
       },
       "devDependencies": {
-        "@lazyrepo/typescript-configs": "workspace:*",
+        "@lazyollama/typescript-configs": "workspace:*",
         "@types/bun": "latest",
         "@types/debug": "^4.1.12",
         "chalk": "^5.4.1",
@@ -85,7 +85,7 @@
         "node-emoji": "^2.2.0",
       },
       "peerDependencies": {
-        "@lazyrepo/typescript-common": "workspace:*",
+        "@lazyollama/typescript-common": "workspace:*",
         "chalk": "^5.4.1",
         "debug": "^4.4.0",
         "node-emoji": "^2.2.0",
@@ -93,10 +93,10 @@
       },
     },
     "packages/common": {
-      "name": "@lazyrepo/typescript-common",
+      "name": "@lazyollama/typescript-common",
       "version": "0.0.1-alpha.0.1",
       "devDependencies": {
-        "@lazyrepo/typescript-configs": "workspace:*",
+        "@lazyollama/typescript-configs": "workspace:*",
         "@types/bun": "latest",
         "@types/debug": "^4.1.12",
         "chalk": "^5.4.1",
@@ -111,17 +111,17 @@
       },
     },
     "packages/configs": {
-      "name": "@lazyrepo/typescript-configs",
+      "name": "@lazyollama/typescript-configs",
       "version": "0.0.0",
     },
     "packages/react-toolkit": {
-      "name": "@lazyrepo/typescript-react-toolkit",
+      "name": "@lazyollama/typescript-react-toolkit",
       "version": "0.0.1-alpha.0.1",
       "dependencies": {
         "sleepydogs": "1.0.8-alpha.2",
       },
       "devDependencies": {
-        "@lazyrepo/typescript-configs": "workspace:*",
+        "@lazyollama/typescript-configs": "workspace:*",
         "@types/bun": "latest",
         "@types/debug": "^4.1.12",
         "@types/react": "^19.0.10",
@@ -131,7 +131,7 @@
         "node-emoji": "^2.2.0",
       },
       "peerDependencies": {
-        "@lazyrepo/typescript-common": "workspace:*",
+        "@lazyollama/typescript-common": "workspace:*",
         "chalk": "^5.4.1",
         "debug": "^4.4.0",
         "node-emoji": "^2.2.0",
@@ -194,19 +194,19 @@
 
     "@isaacs/cliui": ["@isaacs/cliui@8.0.2", "", { "dependencies": { "string-width": "^5.1.2", "string-width-cjs": "npm:string-width@^4.2.0", "strip-ansi": "^7.0.1", "strip-ansi-cjs": "npm:strip-ansi@^6.0.1", "wrap-ansi": "^8.1.0", "wrap-ansi-cjs": "npm:wrap-ansi@^7.0.0" } }, "sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA=="],
 
-    "@lazyrepo/api": ["@lazyrepo/api@workspace:core/api"],
+    "@lazyollama/api": ["@lazyollama/api@workspace:core/api"],
 
-    "@lazyrepo/design-tokens": ["@lazyrepo/design-tokens@workspace:core/tokens"],
+    "@lazyollama/design-tokens": ["@lazyollama/design-tokens@workspace:core/tokens"],
 
-    "@lazyrepo/typescript-clients": ["@lazyrepo/typescript-clients@workspace:packages/clients"],
+    "@lazyollama/typescript-clients": ["@lazyollama/typescript-clients@workspace:packages/clients"],
 
-    "@lazyrepo/typescript-common": ["@lazyrepo/typescript-common@workspace:packages/common"],
+    "@lazyollama/typescript-common": ["@lazyollama/typescript-common@workspace:packages/common"],
 
-    "@lazyrepo/typescript-configs": ["@lazyrepo/typescript-configs@workspace:packages/configs"],
+    "@lazyollama/typescript-configs": ["@lazyollama/typescript-configs@workspace:packages/configs"],
 
-    "@lazyrepo/typescript-react-toolkit": ["@lazyrepo/typescript-react-toolkit@workspace:packages/react-toolkit"],
+    "@lazyollama/typescript-react-toolkit": ["@lazyollama/typescript-react-toolkit@workspace:packages/react-toolkit"],
 
-    "@lazyrepo/web": ["@lazyrepo/web@workspace:core/web"],
+    "@lazyollama/web": ["@lazyollama/web@workspace:core/web"],
 
     "@nodelib/fs.scandir": ["@nodelib/fs.scandir@2.1.5", "", { "dependencies": { "@nodelib/fs.stat": "2.0.5", "run-parallel": "^1.1.9" } }, "sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g=="],
 

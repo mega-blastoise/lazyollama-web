@@ -1,5 +1,5 @@
 import { LazySingleton as SuperLazySingletonFactory } from 'sleepydogs';
-import { createLogger } from '@lazyrepo/typescript-common';
+import { createLogger } from '@lazyollama/typescript-common';
 
 export enum OllamaClientCacheType {
   PullQueued = 'pull-queued',
@@ -76,7 +76,7 @@ export type ChatPromptFinalResponse = {
 export class OllamaClient {
   private baseUrl = process.env.DOCKER_NETWORK_OLLAMA_API_URL;
   private cache = new Map<string, Set<string>>();
-  private logger = createLogger('lmgen:typescript:common:ollama:client');
+  private logger = createLogger('lazyollama:typescript:common:ollama:client');
 
   constructor() {
     this.cache.set(OllamaClientCacheType.PullQueued, new Set());
