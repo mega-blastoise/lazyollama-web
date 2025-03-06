@@ -1,5 +1,5 @@
 {
-  "name": "@lazyollama/design-tokens",
+  "name": "@lazyollama-web/design-tokens",
   "type": "module",
   "packageManager": "bun@1.34.0",
   "version": "0.0.1-alpha.0.1",
@@ -24,7 +24,9 @@
       "default": "./out/tokens/index.cjs"
     }
   },
-  "files": ["out"],
+  "files": [
+    "out"
+  ],
   "scripts": {
     "check-types": "tsc -p tsconfig.json && tsc-alias -p tsconfig.json",
     "style-dictionary": "tsx lib/build-tokens.ts",
@@ -40,7 +42,7 @@
     "test": "echo \"Skipping testing!\""
   },
   "devDependencies": {
-    "@lazyollama/typescript-configs": "workspace:*",
+    "@lazyollama-web/typescript-configs": "workspace:*",
     "@types/bun": "latest",
     "autoprefixer": "^10.4.20",
     "cssnano": "^7.0.6",

@@ -1,3 +1,5 @@
+import './Home.css';
+
 import React from 'react';
 import { Navbar } from '../navbar';
 import { Hero } from './components/Hero';

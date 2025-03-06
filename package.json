@@ -1,5 +1,5 @@
 {
-  "name": "@lazyollama/root",
+  "name": "@lazyollama-web/root",
   "type": "module",
   "repository": {
     "type": "git",
