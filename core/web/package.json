@@ -23,12 +23,15 @@
     "dependencies": {
         "@lazyollama/typescript-clients": "workspace:*",
         "@lazyollama/typescript-common": "workspace:*",
+        "@lazyollama/typescript-react-components": "workspace:*",
         "chalk": "^5.4.1",
+        "classnames": "^2.5.1",
         "debug": "^4.4.0",
         "node-emoji": "^2.2.0",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
-        "sleepydogs": "1.0.8-alpha.2",
+        "react-syntax-highlighter": "^15.6.1",
+        "sleepydogs": "^1.0.7",
         "web-vitals": "^4.2.4"
     }
 }

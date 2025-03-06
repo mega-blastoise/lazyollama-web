@@ -1,5 +1,5 @@
 {
-  "name": "@lazyrepo/typescript-react-components",
+  "name": "@lazyollama/typescript-react-components",
   "type": "module",
   "packageManager": "bun@1.34.0",
   "version": "0.0.1-alpha.0.1",
@@ -23,7 +23,8 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.5",
-    "@lazyrepo/typescript-configs": "workspace:*",
+    "@lazyollama/typescript-common": "workspace:*",
+    "@lazyollama/typescript-configs": "workspace:*",
     "@storybook/addon-essentials": "^8.6.4",
     "@storybook/addon-interactions": "^8.6.4",
     "@storybook/addon-onboarding": "^8.6.4",
@@ -36,17 +37,21 @@
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@types/react-syntax-highlighter": "^15.5.13",
-    "storybook": "^8.6.4"
-  },
-  "peerDependencies": {
-    "@lazyrepo/typescript-common": "workspace:*",
+    "classnames": "^2.5.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-syntax-highlighter": "^15.6.1",
+    "sleepydogs": "1.0.8-alpha.2",
+    "storybook": "^8.6.4",
     "typescript": "^5.0.0"
   },
-  "dependencies": {
+  "peerDependencies": {
+    "@lazyollama/typescript-common": "workspace:*",
     "classnames": "^2.5.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "react-syntax-highlighter": "^15.6.1",
-    "sleepydogs": "1.0.8-alpha.2"
+    "sleepydogs": "1.0.8-alpha.2",
+    "typescript": "^5.0.0"
   }
 }

@@ -1,5 +1,5 @@
-import '../styles/variables.css';
-import '../styles/reset.css';
+import '../../styles/variables.css';
+import '../../styles/reset.css';
 
 import React, { useState, useEffect, useRef, ReactNode } from 'react';
 import classnames from 'classnames';

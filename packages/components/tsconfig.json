@@ -1,8 +1,8 @@
 {
-    "extends": "@lazyrepo/typescript-configs/typescript/jsx.tsconfig.json",
+    "extends": "@lazyollama/typescript-configs/typescript/jsx.tsconfig.json",
     "compilerOptions": {
-
         "lib": ["ESNext", "DOM"],
+        "jsx": "react",
         "rootDir": "./",
         "baseUrl": "./",
         "paths": {
