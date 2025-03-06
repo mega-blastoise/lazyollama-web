@@ -1,6 +1,5 @@
-export { default as ThemeProvider, useTheme } from './themes/ThemeProvider';
+export * from './contexts';
 
-// Components
 export {
   Button,
   type ButtonProps,
