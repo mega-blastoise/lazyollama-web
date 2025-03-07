@@ -1,4 +1,5 @@
 import home from '../public/index.html';
+import dashboard from '../public/dashboard.html';
 import { BunRoutes } from './types';
 
 /** 
@@ -12,7 +13,8 @@ import { BunRoutes } from './types';
  * my personal suggestion is [Actix-Web](https://actix.rs/)
  * */
 const routes: BunRoutes = {
-    "/": home
+    "/": home,
+    "/dashboard": dashboard
 };
 
 export default routes;
